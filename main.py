@@ -6,14 +6,19 @@ if __name__ == '__main__':
     magic_num = random.randint(1, 100)
 
     # просит пользователя угадать это число
-    print("I made a number. Guess it!")
+    print("I made a number from 1 to 100. Guess it!")
 
     while True:
 
-        guess_num = int(input("My number is... "))
-
         # Проверка что это целое неотрицательное число, и что оно в диапазоне от 1 до 100
-        # ...
+        try:
+            guess_num = int(input("My number is... "))
+        except ValueError:
+            print("Oops! That was no valid number. Try again...")
+            continue
+
+        if not(1 <= guess_num <= 100):
+            print("Oops! That was no valid number. Try again...")
 
         # Проверка на правильность ответа
         if guess_num == magic_num:
